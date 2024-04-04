@@ -1,0 +1,108 @@
+﻿<Page x:Class="ExamPractice.Pages.PageOrder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ExamPractice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageOrder">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Заявки" FontFamily="Calibri" FontSize="18" FontWeight="SemiBold"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="Добавить" Margin="3,0" Click="AddOrderRequest" Background="#FFCBFFCC"/>
+            <Button Content="Редактировать" Margin="3,0" Click="EditOrderRequest" Background="#FFFFF1BF"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Поиск:"/>
+            <TextBox Grid.Column="1" TextChanged="SearchFieldValueChanged" Margin="5" x:Name="SearchField" Width="Auto"></TextBox>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.RowSpan="2">
+                <Label Content="Сортировка:" Grid.Row="0"/>
+                <ComboBox SelectionChanged="SortingListChanged" x:Name="FilterOptionsList" Margin="5,3" Grid.Row="1">
+                    <ComboBoxItem Content="Сначала старые"/>
+                    <ComboBoxItem Content="Сначала новые"/>
+                </ComboBox>
+            </StackPanel>
+
+            <Label Grid.Column="1" Content="Сортировка по дате:"/>
+
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <Label Content="От:"/>
+                <DatePicker x:Name="BeginDatePicker" Margin="5" SelectedDateChanged="BeginDatePickerChanged"/>
+                <Label Content="До:"/>
+                <DatePicker x:Name="EndDatePicker" Margin="5" SelectedDateChanged="EndDatePickerChanged"/>
+                <Button Content="Сортировать" Margin="5" Click="DateSortRequest"/>
+                <Button Content="Сброс" Margin="5" x:Name="ResetDatePickers" Click="ResetDatePickersRequest"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Margin="5" Grid.Row="4">
+            <ListBox x:Name="OrderList" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="Beige" Padding="15" HorizontalAlignment="Center">
+                            <UniformGrid Columns="2">
+                                <TextBlock Text="ФИО Клиента"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding ClientName}"/>
+                                <TextBlock Text="Устройство"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding DeviceType}"/>
+                                <TextBlock Text="Модель устройства"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding DeviceModel}"/>
+                                <TextBlock Text="Проблема"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding Description}"/>
+                                <TextBlock Text="Дата начала"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding DateStart, StringFormat=dd.MM.yyyy}"/>
+                                <TextBlock Text="Дата завершения"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding DateEnd}"/>
+                                <TextBlock Text="Cтатус заказа"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding OrderStatuses.Status}"/>
+                                <TextBlock Text="Техник"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding Technicians.TechnicianFIO}"/>
+                                <TextBlock Text="Комментарий техника"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding TechnicianComments.Comment}"/>
+                                <TextBlock Text="Телефон клиента"/>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding ClientPhone}"/>
+                            </UniformGrid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Удалить" Click="RemoveItemRequest"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel ItemWidth="Auto"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Border>
+    </Grid>
+</Page>

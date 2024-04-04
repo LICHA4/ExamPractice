@@ -1,0 +1,25 @@
+﻿<Window x:Class="ExamPractice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamPractice"
+        mc:Ignorable="d"
+        Title="Учет заявок на ремонт техники ООО Инфотех" Height="450" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="AntiqueWhite">
+            <Label Content="Меню" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+            <Button Style="{DynamicResource MainMenuButtonStyle}" Content="Заявки" Click="OpenPageOrder"/>
+            <Button Style="{DynamicResource MainMenuButtonStyle}" Content="Мастера" Click="OpenPageMaster"/>
+            <Button Style="{DynamicResource MainMenuButtonStyle}" Content="Комплектующие" Click="OpenPageHardware"/>
+            <Button Style="{DynamicResource MainMenuButtonStyle}" Content="Комментарии" Click="OpenPageComments"/>
+            <Button Style="{DynamicResource MainMenuButtonStyle}" Content="Пользователи" Click="OpenPageUsers"/>
+            <Button Style="{DynamicResource MainMenuButtonStyle}"  Content="Выход" Click="ExitApp"/>
+        </StackPanel>
+        <Frame NavigationUIVisibility="Hidden" Grid.Column="1" x:Name="MainFrame"/>
+    </Grid>
+</Window>

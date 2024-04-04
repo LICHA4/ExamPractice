@@ -1,0 +1,22 @@
+﻿<Window x:Class="ExamPractice.ContentWindows.NewUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamPractice.ContentWindows"
+        mc:Ignorable="d"
+        Title="Добавление нового пользователя" Width="300">
+    <Grid>
+        <StackPanel>
+            <Label Content="Имя пользователя:"/>
+            <TextBox x:Name="NameField" Margin="5"/>
+            <Label Content="Логин пользователя:"/>
+            <TextBox x:Name="LoginField" Margin="5"/>
+            <Label Content="Пароль пользователя:"/>
+            <PasswordBox x:Name="PasswordField" Margin="5"/>
+            <Label Content="Роль пользователя:"/>
+            <ComboBox x:Name="UserRolesList" Margin="5"/>
+            <Button Margin="5" Content="Добавить пользователя" Click="AddUserRequest"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,37 @@
+﻿<Page x:Class="ExamPractice.Pages.Admin.PageUsersAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ExamPractice.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageUsersAdmin">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Пользователи"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Margin="5" Content="Новый пользователь" Click="AddNewUserRequest"/>
+        </StackPanel>
+
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" Margin="5" Grid.Row="2" AutoGenerateColumns="False" x:Name="UsersList">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID_User}"/>
+                <DataGridTextColumn Header="Имя пользователя" Binding="{Binding User_Name}"/>
+                <DataGridTextColumn Header="Роль пользователя" Binding="{Binding Roles.Role}"/>
+                <DataGridTemplateColumn Header="Удалить пользователя">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Margin="3" Content="Удалить" Click="DeleteUserRequest"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

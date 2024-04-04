@@ -1,0 +1,36 @@
+﻿<Window x:Class="ExamPractice.ContentWindows.WindowEditRequest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamPractice.ContentWindows"
+        mc:Ignorable="d"
+        Title="Редактирование заявки" Height="Auto" Width="400" SizeToContent="Height" ResizeMode="NoResize">
+    <Grid>
+        <Grid>
+            <StackPanel x:Name="BindingRequest">
+                <Label Content="Тип устройства:"/>
+                <TextBox Margin="5,0" x:Name="DeviceTypeField"/>
+                <Label Content="Модель устройства:"/>
+                <TextBox Margin="5,0" x:Name="DeviceModelField"/>
+                <Label Content="Описание проблемы:"/>
+                <TextBox Margin="5,0" x:Name="DescriptionField" VerticalScrollBarVisibility="Visible" Height="100"/>
+                <UniformGrid Columns="2">
+                    <Label Margin="5" Content="ФИО клиента:"/>
+                    <TextBox Margin="5" x:Name="ClientNameField"/>
+                    <Label Margin="5" Content="Телефон клиента:"/>
+                    <TextBox Margin="5" x:Name="ClientPhoneField"/>
+                </UniformGrid>
+                <Label Content="Мастер (Техник):"/>
+                <ComboBox Margin="5,0" x:Name="TechniciansList"
+                  DisplayMemberPath="TechnicianFIO"
+                  SelectedValuePath="ID_Technician"/>
+                <Label Content="Статус заказа:"/>
+                <ComboBox Margin="5,0" x:Name="OrderStatusesList"
+                          DisplayMemberPath="Status"
+                          SelectedValuePath="ID_Status"/>
+                <Button Content="Редактировать" Height="30" Margin="5" Background="Black" Foreground="White" Click="EditOrderConfirm"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
